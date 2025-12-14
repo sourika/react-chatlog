@@ -2,16 +2,19 @@ import PropTypes from 'prop-types';
 import ChatEntry from './ChatEntry';
 import './ChatLog.css';
 
-const ChatLog = ({ entries }) => {
+const ChatLog = ({ entries, onToggleLike }) => {
   const localSender = entries[0]?.sender;
   return (
     <section className="chat-log">
       {entries.map((entry) => (
         <ChatEntry
           key={entry.id}
+          id={entry.id}
           sender={entry.sender}
           body={entry.body}
           timeStamp={entry.timeStamp}
+          liked={entry.liked}
+          onToggleLike={onToggleLike}
           isLocal={entry.sender === localSender}
         />
       ))}
@@ -26,9 +29,10 @@ ChatLog.propTypes = {
       sender: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       timeStamp: PropTypes.string.isRequired,
-      liked: PropTypes.bool,
+      liked: PropTypes.bool.isRequired,
     })
   ).isRequired,
+  onToggleLike: PropTypes.func.isRequired,
 };
 
 export default ChatLog;
