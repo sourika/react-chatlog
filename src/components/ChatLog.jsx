@@ -3,6 +3,7 @@ import ChatEntry from './ChatEntry';
 import './ChatLog.css';
 
 const ChatLog = ({ entries }) => {
+  const localSender = entries[0]?.sender;
   return (
     <section className="chat-log">
       {entries.map((entry) => (
@@ -11,6 +12,7 @@ const ChatLog = ({ entries }) => {
           sender={entry.sender}
           body={entry.body}
           timeStamp={entry.timeStamp}
+          isLocal={entry.sender === localSender}
         />
       ))}
     </section>
