@@ -2,7 +2,7 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({ 
+const ChatEntry = ({
   id,
   sender,
   body,
