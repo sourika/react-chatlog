@@ -2,7 +2,15 @@ import './ChatEntry.css';
 import PropTypes from 'prop-types';
 import TimeStamp from './TimeStamp';
 
-const ChatEntry = ({ id, sender, body, timeStamp, liked, onToggleLike, isLocal }) => {
+const ChatEntry = ({ 
+  id,
+  sender,
+  body,
+  timeStamp,
+  liked = false,
+  onToggleLike = () => {},
+  isLocal = true
+}) => {
   const sideClass = isLocal ? 'local' : 'remote';
   return (
     <article className={`chat-entry ${sideClass}`}>
@@ -25,13 +33,9 @@ ChatEntry.propTypes = {
   sender: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   timeStamp: PropTypes.string.isRequired,
-  liked: PropTypes.bool.isRequired,
-  onToggleLike: PropTypes.func.isRequired,
+  liked: PropTypes.bool,
+  onToggleLike: PropTypes.func,
   isLocal: PropTypes.bool,
-};
-
-ChatEntry.defaultProps = {
-  isLocal: true,
 };
 
 export default ChatEntry;
